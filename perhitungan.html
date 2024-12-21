@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perhitungan Buket Bunga</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <style>
+      /* Mengatur latar belakang gambar agar mengisi seluruh halaman */
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+
+      /* Menambahkan latar belakang gambar pada seluruh halaman */
+      .full-background {
+        background-image: url("img/bg1.jpg");
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .content {
+        padding: 30px;
+        text-align: center;
+        color: white;
+      }
+
+      /* Memperjelas tulisan */
+      .content h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      }
+
+      .content p {
+        font-size: 1.5rem;
+        line-height: 1.8;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      }
+
+      header {
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="img/bunga1-removebg-preview.png"
+            alt="Logo"
+            width="40"
+            height="32"
+          />
+          Bucket Bunga
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard.php">
+                <button type="button" class="btn btn-outline-danger">
+                  Home
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Background Section -->
+    <div class="full-background" style="margin-top: 80px">
+      <div class="content">
+        <h2>Perhitungan Bahan Buket Bunga</h2>
+        <p>
+          Masukkan jumlah buket yang diinginkan untuk menghitung total bahan
+          yang dibutuhkan.
+        </p>
+
+        <!-- Form Perhitungan -->
+        <div class="container">
+          <form id="perhitunganForm">
+            <div class="mb-3">
+              <label for="mawarMerah" class="form-label"
+                >Jumlah Buket Mawar Merah</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="mawarMerah"
+                placeholder="Masukkan jumlah buket Mawar Merah"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="krisan" class="form-label">Jumlah Buket Krisan</label>
+              <input
+                type="number"
+                class="form-control"
+                id="krisan"
+                placeholder="Masukkan jumlah buket Krisan"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="mawarPutih" class="form-label"
+                >Jumlah Buket Mawar Putih</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="mawarPutih"
+                placeholder="Masukkan jumlah buket Mawar Putih"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="sunflower" class="form-label"
+                >Jumlah Buket Sunflower</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="sunflower"
+                placeholder="Masukkan jumlah buket Sunflower"
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-outline-light btn-custom"
+              onclick="hitungBahan()"
+            >
+              Hitung Bahan
+            </button>
+          </form>
+
+          <!-- Hasil Perhitungan -->
+          <div class="result" id="hasilPerhitungan" style="display: none">
+            <h4>Hasil Perhitungan Bahan:</h4>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Bahan</th>
+                  <th>Jumlah Bahan yang Diperlukan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pita (meter)</td>
+                  <td id="pita"></td>
+                </tr>
+                <tr>
+                  <td>Kain Kasa (meter)</td>
+                  <td id="kainKasa"></td>
+                </tr>
+                <tr>
+                  <td>Kertas Plastik (meter)</td>
+                  <td id="kertasPlastik"></td>
+                </tr>
+                <tr>
+                  <td>Bunga Segar (tangkai)</td>
+                  <td id="bungaSegar"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript untuk perhitungan -->
+    <script type="text/javascript">
+      function hitungBahan() {
+        var mawarMerah = document.getElementById("mawarMerah").value || 0;
+        var krisan = document.getElementById("krisan").value || 0;
+        var mawarPutih = document.getElementById("mawarPutih").value || 0;
+        var sunflower = document.getElementById("sunflower").value || 0;
+
+        var pita =
+          1.5 * mawarMerah + 1.5 * krisan + 1.5 * mawarPutih + 1.5 * sunflower;
+        var kainKasa =
+          3 * mawarMerah + 4 * krisan + 3 * mawarPutih + 5 * sunflower;
+        var kertasPlastik =
+          4 * mawarMerah + 4 * krisan + 6 * mawarPutih + 9 * sunflower;
+        var bungaSegar =
+          5 * mawarMerah + 8 * krisan + 5 * mawarPutih + 5 * sunflower;
+
+        document.getElementById("pita").innerText = pita + " meter";
+        document.getElementById("kainKasa").innerText = kainKasa + " meter";
+        document.getElementById("kertasPlastik").innerText =
+          kertasPlastik + " meter";
+        document.getElementById("bungaSegar").innerText =
+          bungaSegar + " tangkai";
+
+        document.getElementById("hasilPerhitungan").style.display = "block";
+      }
+    </script>
+
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

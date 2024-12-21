@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontak</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!--Header-->
+    <div class="container">
+      <header
+        class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+      >
+        <div
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <img
+            src="img/bunga1-removebg-preview.png"
+            class="bi me-2"
+            width="40"
+            height="32"
+          />
+          <span class="fs-4">Bucket Bunga</span>
+        </div>
+
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a href="dashboard.php" class="nav-link"
+              ><button type="button" class="btn btn-outline-danger">
+                Home
+              </button></a
+            >
+          </li>
+        </ul>
+      </header>
+    </div>
+
+    <!--End Header-->
+
+    <!--Contact-->
+
+    <div class="container text-center mt-5">
+      <h1>Selamat Datang di Toko Kami!</h1>
+      <p>
+        Jika ada pertanyaan, langsung hubungi kami via WhatsApp atau E-mail.
+      </p>
+
+      <!-- Tombol WhatsApp -->
+      <a
+        href="https://wa.me/628157114056"
+        class="btn btn-success btn-lg"
+        target="_blank"
+      >
+        <i class="fab fa-whatsapp"></i> Hubungi Kami di WhatsApp
+      </a>
+    </div>
+
+    <!--Contact1-->
+
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+          <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Halo!!</h1>
+          <p class="col-lg-10 fs-4">
+            Mohon untuk mengisi email,nama,dan pesan yang ingin anda sampaikan,
+            terimakasih sudah menghubungi kami.
+          </p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+          <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingInput"
+                placeholder="text"
+              />
+              <label for="floatingInput">Nama Anda</label>
+            </div>
+            <div class="checkbox mb-3">
+              <label for="message" class="form-label">Pesan Anda</label>
+              <textarea
+                class="form-control"
+                id="message"
+                name="message"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">
+              Kirim Pesan
+            </button>
+            <hr class="my-4" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--end contact-->
+  </body>
+</html>
